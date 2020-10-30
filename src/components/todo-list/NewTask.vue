@@ -40,6 +40,7 @@ export default {
           title: this.inputValue,
           done: false
         });
+        this.$store.dispatch("saveTasksToLocalStorage");
         this.inputValue = "";
       }
     }

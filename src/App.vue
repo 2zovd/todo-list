@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
 import TheHeader from "./components/layout/TheHeader";
 import BaseContainer from "./components/UI/BaseContainer";
 import BaseCard from "./components/UI/BaseCard";
@@ -25,6 +26,23 @@ export default {
     NewTask,
     TasksList,
     TheHeader
+  },
+  computed: {
+    tasksList() {
+      return this.$store.state.tasks;
+    },
+    ...mapGetters(["tasks"])
+  },
+  methods: {
+    ...mapActions(["saveTasksToLocalStorage", "getTasksFromLocalStorage"])
+  },
+  mounted() {
+    if (localStorage.getItem("tasks")) {
+      const tasks = JSON.parse(localStorage.getItem("tasks"));
+      this.getTasksFromLocalStorage(tasks);
+    } else {
+      localStorage.setItem("tasks", []);
+    }
   }
 };
 </script>

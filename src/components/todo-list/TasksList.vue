@@ -6,7 +6,7 @@
       class="flex items-center justify-between p-4 -mx-4"
       :class="{ 'bg-gray-100': index % 2}"
     >
-      <base-checkbox :id="task.id">{{task.title}}</base-checkbox>
+      <task-label :id="task.id" :done="task.done" :label="task.title"></task-label>
 
       <button @click="deleteTask(task.id)" class="text-black w-4 h-4">
         <svg class="fill-current" viewBox="-40 0 427 427.001" xmlns="http://www.w3.org/2000/svg">
@@ -26,11 +26,11 @@
 </template>
 
 <script>
-import BaseCheckbox from "../UI/BaseCheckbox";
+import TaskLabel from "../todo-list/TaskLabel";
 import { mapGetters } from "vuex";
 export default {
   components: {
-    BaseCheckbox
+    TaskLabel
   },
   data() {
     return {
@@ -43,6 +43,7 @@ export default {
   methods: {
     deleteTask(id) {
       this.$store.dispatch("deleteTask", id);
+      this.$store.dispatch("saveTasksToLocalStorage");
     }
   }
 };
