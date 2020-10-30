@@ -3,7 +3,10 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: [],
+  purge: [
+    './src/**/*.html',
+    './src/**/*.vue',
+  ],
   target: 'relaxed',
   prefix: '',
   important: false,
@@ -331,7 +334,9 @@ module.exports = {
       disc: 'disc',
       decimal: 'decimal',
     },
-    margin: (theme, { negative }) => ({
+    margin: (theme, {
+      negative
+    }) => ({
       auto: 'auto',
       ...theme('spacing'),
       ...negative(theme('spacing')),
@@ -340,7 +345,9 @@ module.exports = {
       full: '100%',
       screen: '100vh',
     },
-    maxWidth: (theme, { breakpoints }) => ({
+    maxWidth: (theme, {
+      breakpoints
+    }) => ({
       none: 'none',
       xs: '20rem',
       sm: '24rem',
@@ -407,7 +414,9 @@ module.exports = {
     padding: theme => theme('spacing'),
     placeholderColor: theme => theme('colors'),
     placeholderOpacity: theme => theme('opacity'),
-    space: (theme, { negative }) => ({
+    space: (theme, {
+      negative
+    }) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
     }),
@@ -619,7 +628,9 @@ module.exports = {
       '90': '90deg',
       '180': '180deg',
     },
-    translate: (theme, { negative }) => ({
+    translate: (theme, {
+      negative
+    }) => ({
       ...theme('spacing'),
       ...negative(theme('spacing')),
       '-full': '-100%',
@@ -684,13 +695,20 @@ module.exports = {
     },
     keyframes: {
       spin: {
-        to: { transform: 'rotate(360deg)' },
+        to: {
+          transform: 'rotate(360deg)'
+        },
       },
       ping: {
-        '75%, 100%': { transform: 'scale(2)', opacity: '0' },
+        '75%, 100%': {
+          transform: 'scale(2)',
+          opacity: '0'
+        },
       },
       pulse: {
-        '50%': { opacity: '.5' },
+        '50%': {
+          opacity: '.5'
+        },
       },
       bounce: {
         '0%, 100%': {
