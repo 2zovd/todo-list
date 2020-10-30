@@ -5,6 +5,3 @@
     <slot></slot>
   </button>
 </template>
-
-<style lang="postcss" scoped>
-</style>
